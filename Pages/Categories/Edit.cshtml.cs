@@ -6,11 +6,11 @@ using SupermarketWEB.Models;
 
 namespace SupermarketWeb.Pages.Categories
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly SumpermarketContext _context;
 
-        public DeleteModel(SumpermarketContext context)
+        public EditModel(SumpermarketContext context)
         {
             _context = context;
         }
@@ -26,38 +26,45 @@ namespace SupermarketWeb.Pages.Categories
             }
 
             var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
-
             if (category == null)
             {
                 return NotFound();
             }
-            else
-            {
-                Category = category;
-            }
+            Category = category;
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null || _context.Categories == null)
+            if(!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            var category = await _context.Categories.FindAsync(id);
+            _context.Attach(Category).State = EntityState.Modified;
 
-            if (category != null)
+            try
             {
-                Category = category;
-                _context.Categories.Remove(Category);
                 await _context.SaveChangesAsync();
             }
-
-            
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CategoryExists(Category.Id)) 
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return RedirectToPage("./Index");
         }
-    }
 
+        private bool CategoryExists(int id)
+        {
+            return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+    }
 }
