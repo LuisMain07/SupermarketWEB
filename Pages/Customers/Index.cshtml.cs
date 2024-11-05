@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWeb.Pages.Categories
+
+namespace SupermarketWEB.Pages.Customers
 {
     public class IndexModel : PageModel
     {
@@ -14,15 +15,11 @@ namespace SupermarketWeb.Pages.Categories
         {
             _context = context;
         }
-        public IList<Category> Categories { get; set; } = default!;
+        public IList<Customer> Customers { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Categories != null)
-            {
-                Categories = await _context.Categories.ToListAsync();
-            }
+            Customers = await _context.Customers.ToListAsync();
         }
-
     }
 }

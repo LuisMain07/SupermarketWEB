@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace SupermarketWEB.Data
 {
-    public class SumpermarketContext :  DbContext
+    public class SumpermarketContext : DbContext
     {
         public SumpermarketContext(DbContextOptions options) : base(options)
         {
         }
 
-        //public DbSet<Customer> Customers { get; set; }
+        public DbSet<PayMode> PayModes { get; set; }
 
-        //public DbSet<PayModel> PayModes { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Product> Products { get; set; }
 
