@@ -9,7 +9,7 @@ namespace SupermarketWEB.Data
         {
         }
 
-        public DbSet<PayMode> PayModes { get; set; }
+        public DbSet<PayModel> PayModes { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
 

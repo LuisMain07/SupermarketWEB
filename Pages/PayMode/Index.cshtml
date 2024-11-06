@@ -21,7 +21,7 @@
             <th>
                 @if (Model.PayMode != null && Model.PayMode.Count > 0)
                 {
-                    @Html.DisplayNameFor(model => model.PayMode[0].Description)
+                    @Html.DisplayNameFor(model => model.PayMode[0].Observation)
                 }
             </th>
 
@@ -38,7 +38,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.DisplayFor(modelItem => item.Observation)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
