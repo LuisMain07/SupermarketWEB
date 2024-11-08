@@ -17,6 +17,7 @@ namespace SupermarketWEB.Pages.Account
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page();
+
             if (User.Email == "correo@gmail.com" && User.Password == "1234")
             {
                 var clains = new List<Claim>
@@ -24,7 +25,7 @@ namespace SupermarketWEB.Pages.Account
                 new Claim(ClaimTypes.Name, "admin"),
                 new Claim(ClaimTypes.Email, User.Email),
                 };
-                var identity = new ClaimsIdentity(clains, "My coockieAuth");
+                var identity = new ClaimsIdentity(clains, "MycookieAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
                 await HttpContext.SignInAsync("MycookieAuth", claimsPrincipal);
