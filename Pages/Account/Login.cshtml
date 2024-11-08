@@ -17,30 +17,30 @@
 
                         <!-- Email Field -->
                         <div class="mb-4">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input asp-for="User.Email" class="form-control" id="email" type="email" placeholder="Enter your email" required />
+                            <label for="email" class="form-label">Email </label>
+                            <input asp-for="User.Email" class="form-control" id="email" type="email" placeholder="Ingrese su email" required />
                             <span asp-validation-for="User.Email" class="text-danger"></span>
                         </div>
 
                         <!-- Password Field -->
                         <div class="mb-4">
-                            <label for="password" class="form-label">Password</label>
-                            <input asp-for="User.Password" class="form-control" id="password" type="password" placeholder="Enter your password" required />
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input asp-for="User.Password" class="form-control" id="password" type="password" placeholder="Ingrese su contraseña" required />
                             <span asp-validation-for="User.Password" class="text-danger"></span>
                         </div>
 
                         <!-- Remember Me -->
                         <div class="form-check mb-3">
                             <input type="checkbox" class="form-check-input" id="rememberMe" />
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                            <label class="form-check-label" for="rememberMe">Recuerdame</label>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary w-100">Log In</button>
+                        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
                     </form>
 
                     <div class="text-center mt-3">
-                        <a href="./Register" class="btn btn-link">Don't have an account? Register here</a>
+                        <a href="./Register" class="btn btn-link">¿No tienes una cuenta? Registrate ahora</a>
                     </div>
                 </div>
             </div>
